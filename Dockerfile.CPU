@@ -1,0 +1,11 @@
+FROM tensorflow/tensorflow:2.4.0
+
+RUN pip install pip==21.0.1
+
+WORKDIR /src
+
+ADD requirements.CPU.txt .
+
+RUN pip install -r requirements.CPU.txt
+
+ADD . .

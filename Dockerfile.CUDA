@@ -1,0 +1,14 @@
+FROM nvcr.io/nvidia/tensorflow:20.08-tf2-py3
+
+RUN pip install pip==21.0.1
+
+WORKDIR /src
+
+ADD requirements.CUDA.txt .
+
+RUN pip install -r requirements.CUDA.txt
+
+ADD . .
+
+ENV CUDA_VISIBLE_DEVICES=0
+ENV TF_FORCE_GPU_ALLOW_GROWTH=true
